@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) 2017 Kohei Kakimoto
+ * Author: Kohei Kakimoto
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+doctype html
+html
+  head
+    title XSS Practice
+    meta charset='utf-8'
+  body
+    #header
+      h1 XSS Practice
+      p
+        | XSS Practiceは様々なパターンのクロスサイトスクリプティング（JavaScriptインジェクション）を練習できるWebアプリケーションです。
+    #content
+      #description
+        h2 使い方
+        p
+          | 各ページに設置されている入力フォーム等にJavaScriptコードを挿入し、alert(document.cookie); を実行してください。
+        h2 注意事項
+        ul
+          li このWebアプリを通して習得した知識・技術の悪用は厳禁です。管理対象外のシステムに攻撃を仕掛けないでください。
+          li Google Chrome等のブラウザを使用している場合、XSSフィルタを無効化する必要があります。（例：$ google-chrome --disable-xss-auditor）
+      hr
+      #questions
+        h2 問題一覧
+        ol
+          li: a href="/tag/basic.php" 基本（入力をそのまま挿入）
+    hr
+    #footer
+      | Copyright (c) 2017 Kohei Kakimoto All Rights Reserved.

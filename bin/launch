@@ -1,0 +1,15 @@
+#!/bin/bash
+
+PHP="/usr/bin/php"
+LISTEN_ADDR="localhost"
+LISTEN_PORT="8080"
+PROJECT_ROOT=$(cd $(dirname $0);cd ..;pwd)
+DOCUMENT_ROOT="${PROJECT_ROOT}/public_html"
+
+which ${PHP} >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "${PHP} not found. aborting..."
+    exit 1
+fi
+
+${PHP} -S ${LISTEN_ADDR}:${LISTEN_PORT} -t ${DOCUMENT_ROOT}
