@@ -1,0 +1,8 @@
+h2 メッセージを入れてください
+form
+  label for="message" メッセージ：
+  input type="text" name="message" value=="<% echo(message|html) %>"
+  input type="submit" value="送信"
+hr
+p
+  input type="text" value=="<% echo(message) %>"
