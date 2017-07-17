@@ -37,7 +37,9 @@ html
       | <% echo(content) %>
     hr
     #navigation
-      a href="/" 問題一覧
-      a href="#" 再読み込み
+      p
+        a href="/" 問題一覧
+      p
+        a href=="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" 再読み込み
     #footer
       | Copyright (c) 2017 Kohei Kakimoto All Rights Reserved.

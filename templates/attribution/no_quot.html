@@ -5,6 +5,4 @@
   <label for="message">メッセージ：</label><input name="message" type="text" value="<% echo(message|html) %>" /><input type="submit" value="送信" />
 </form>
 <hr />
-<p>
-  メッセージ=> <% echo(message) %>
-</p>
+<input type="text" value=<% echo(message_tag_escaped) %>>

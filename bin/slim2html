@@ -11,5 +11,5 @@ if [ $? -ne 0 ]; then
 fi
 
 for slim in `find ${TEMPLATE_DIRECTORY} -name '*.slim'`; do
-    slimrb ${slim} >${slim%.slim}
+    slimrb -p ${slim} >${slim%.slim}
 done
