@@ -26,4 +26,9 @@ form
   input type="text" name="message" value=="<% echo(message|html) %>"
   input type="submit" value="送信"
 hr
+p
+  | &lt;input type="text" value="
+  font color="red"
+    | <% echo(message_tag_escaped|html) %>
+  | "&gt;
 input type="text" value=="<% echo(message_tag_escaped) %>"

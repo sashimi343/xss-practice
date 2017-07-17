@@ -6,5 +6,6 @@
 </form>
 <hr />
 <p>
-  <input type="text" value="<% echo(message) %>" />
+  &lt;input type="text" value="<font color="red"><% echo(message|html) %></font>"&gt;
 </p>
+<input type="text" value="<% echo(message) %>" />
