@@ -24,7 +24,7 @@
 
 require_once(__DIR__.'/../../app.php');
 
-set_title('属性値に挿入（イベントハンドラ使用1）');
+set_title('属性値に挿入（イベントハンドラ使用2）');
 set_description("入力された値をinput要素のvalue属性に設定します。HTMLタグの開始記号 '<' と終了記号 '>' は適切にエスケープされます。");
 
 $message = isset($_GET['message']) ? $_GET['message'] : 'XSS';
@@ -34,6 +34,6 @@ $message_tag_escaped = str_replace('<', '&lt;', str_replace('>', '&gt;', $messag
 add_param('message', $message);
 add_param('message_tag_escaped', $message_tag_escaped);
 
-render('attribution/no_quot', 'question');
+render('attribution/quot', 'question');
 
 ?>

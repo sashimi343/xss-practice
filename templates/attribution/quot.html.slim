@@ -1,5 +1,3 @@
-<?php
-
 /*
  * Copyright (c) 2017 Kohei Kakimoto
  * Author: Kohei Kakimoto
@@ -22,18 +20,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-require_once(__DIR__.'/../../app.php');
-
-set_title('属性値に挿入（イベントハンドラ使用1）');
-set_description("入力された値をinput要素のvalue属性に設定します。HTMLタグの開始記号 '<' と終了記号 '>' は適切にエスケープされます。");
-
-$message = isset($_GET['message']) ? $_GET['message'] : 'XSS';
-$message_tag_escaped = str_replace('<', '&lt;', str_replace('>', '&gt;', $message));    // Escape '<' and '>'
-//$message_tag_escaped = htmlspecialchars($message_tag_escaped);
-
-add_param('message', $message);
-add_param('message_tag_escaped', $message_tag_escaped);
-
-render('attribution/no_quot', 'question');
-
-?>
+h2 メッセージを入れてください
+form
+  label for="message" メッセージ：
+  input type="text" name="message" value=="<% echo(message|html) %>"
+  input type="submit" value="送信"
+hr
+input type="text" value=="<% echo(message_tag_escaped) %>"
