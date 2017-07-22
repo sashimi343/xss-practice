@@ -1,0 +1,13 @@
+<h2>
+  リンク先のURLを入力してください
+</h2>
+<form>
+  <label for="url">URL: </label><input name="url" type="text" value="<% echo(url) %>" /><input type="submit" value="送信" />
+</form>
+<hr />
+<p>
+  &lt;a href=&quot;<font color="red"><% echo(url|html) %></font>&quot;&gt;
+</p>
+<p>
+  <a href="<% echo(url) %>">ここをクリック！！</a>
+</p>

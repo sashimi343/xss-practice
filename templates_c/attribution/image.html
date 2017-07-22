@@ -30,7 +30,7 @@
 <p>
   <% if(has_error,==,true) %><font color="red">エラー: ファイル名に使用できない文字が含まれています。
     使用できない文字: / \ < > * ? " | : ; \0(NUL)</font><% else %>
-  &lt;img src=&quot;text&quot; value=&#039;/images/<font color="red"><% echo(filename|html) %></font>&#039;&gt;
+  &lt;img src=&quot;text&quot; value=&#039;/images/<font color="red"><% echo(filename_escaped|html) %></font>&#039;&gt;
 </p>
 <p>
   <img src='/images/<% echo(filename) %>'>

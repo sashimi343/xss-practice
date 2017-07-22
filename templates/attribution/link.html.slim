@@ -1,0 +1,13 @@
+h2 リンク先のURLを入力してください
+form
+  label for="url" URL: 
+  input type="text" name="url" value=="<% echo(url) %>"
+  input type="submit" value="送信"
+hr
+p
+  | &lt;a href=&quot;
+  font color="red"
+    | <% echo(url|html) %>
+  | &quot;&gt;
+p
+  a href=="<% echo(url) %>" ここをクリック！！

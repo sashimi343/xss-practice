@@ -34,6 +34,7 @@ $filename = isset($_GET['filename']) ? $_GET['filename'] : 'logo-black.png';
 $has_error = (bool)(preg_match('/[\/\\<>\*\?"\|:;\0]/', $filename, $matches));
 
 add_param('filename', $filename);
+add_param('filename_escaped', htmlspecialchars($filename));
 add_param('has_error', $has_error);
 
 render('attribution/image', 'question');

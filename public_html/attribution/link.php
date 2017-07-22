@@ -1,3 +1,5 @@
+<?php
+
 /*
  * Copyright (c) 2017 Kohei Kakimoto
  * Author: Kohei Kakimoto
@@ -20,35 +22,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-h2 ロゴ画像表示くん（仮）
-p
-  | 以下のフォームに画像ファイル名を入力すると、それを表示します。
-    なお、ファイル名に使用できない文字が含まれている場合、
-    エラーメッセージを表示します。
-h3 存在する画像ファイル
-ul
-  li logo-black.png
-  li logo-red.png
-  li logo-green.png
-  li logo-blue.png
-form
-  label for="filename" ファイル名
-  input type="text" name="filename" value=="<% echo(filename|html) %>"
-  input type="submit" value="表示"
-hr
-p
-  // Error page ----------------------------------------------------------------
-  | <% if(has_error,==,true) %>
-  font color="red"
-    | エラー: ファイル名に使用できない文字が含まれています。
-      使用できない文字: / \ < > * ? " | : ; \0(NUL)
+require_once(__DIR__.'/../../app.php');
 
-  // Display logo image --------------------------------------------------------
-  | <% else %>
-    &lt;img src=&quot;text&quot; value=&#039;/images/
-  font color="red"
-    | <% echo(filename_escaped|html) %>
-  | &#039;&gt;
-p
-  | <img src='/images/<% echo(filename) %>'>
-    <% /if %>
+set_title('リンク先URLに挿入');
+set_description("
+入力された値をリンク先のURL（href属性）に設定します。HTMLとして意味のある記号は適切にエスケープされます。\n
+リンクをクリックしたらアラートボックスが表示されるようにしてください。
+");
+
+$url = isset($_GET['url']) ? $_GET['url'] : 'http://www.google.co.jp/';
+
+add_param('url', htmlspecialchars($url));
+
+render('attribution/link', 'question');
+
+?>
