@@ -2,6 +2,7 @@
 
 PROJECT_ROOT=$(cd $(dirname $0);cd ..;pwd)
 TEMPLATE_DIRECTORY="${PROJECT_ROOT}/templates"
+TEMPLATE_C_DIRECTORY="${PROJECT_ROOT}/templates_c"
 
 # Abort slim compilation if slim2rb is not installed.
 which slimrb >/dev/null 2>&1
@@ -11,5 +12,6 @@ if [ $? -ne 0 ]; then
 fi
 
 for slim in `find ${TEMPLATE_DIRECTORY} -name '*.slim'`; do
-    slimrb -p ${slim} >${slim%.slim}
+    slim_c=`echo ${slim%.slim} | sed -e "s@${TEMPLATE_DIRECTORY}@${TEMPLATE_C_DIRECTORY}@"`
+    slimrb -p ${slim} >${slim_c}
 done

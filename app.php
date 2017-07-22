@@ -57,12 +57,12 @@ function render($template, $layout = 'default') {
 }
 
 function resolv_template_path($template) {
-    $path = __DIR__.'/templates/'.$template.'.html';
+    $path = __DIR__.'/templates_c/'.$template.'.html';
     return $path;
 }
 
 function resolv_layout_path($layout) {
-    $path = __DIR__.'/templates/layouts/'.$layout.'.html';
+    $path = __DIR__.'/templates_c/layouts/'.$layout.'.html';
     return $path;
 }
 
