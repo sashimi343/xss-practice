@@ -1,3 +1,5 @@
+<?php
+
 /*
  * Copyright (c) 2017 Kohei Kakimoto
  * Author: Kohei Kakimoto
@@ -20,26 +22,20 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-doctype html
-html
-  head
-    title
-      | <% echo(title|html) %> | XSS Practice
-    meta charset='utf-8'
-  body
-    #header
-      h1
-        | <% echo(title|html) %>
-      p
-        | <% echo(description|nl2br) %>
-    hr
-    #content
-      | <% echo(content) %>
-    hr
-    #navigation
-      p
-        a href="/" 問題一覧
-      p
-        a href=="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" 再読み込み
-    #footer
-      | Copyright (c) 2017 Kohei Kakimoto All Rights Reserved.
+require_once(__DIR__.'/../../app.php');
+
+set_title('imgタグ内に挿入');
+set_description("入力した文字列をimg要素のsrc属性に設定します。ファイル名に使用できない文字列を入力した場合、エラーメッセージが表示されます。\nヒント: onerrorイベントハンドラ");
+
+$filename = isset($_GET['filename']) ? $_GET['filename'] : 'logo-black.png';
+
+// Check if $filename is valid
+// Invalid characters are / \ < > * ? " | : ; \0(NUL)
+$has_error = (bool)(preg_match('/[\/\\<>\*\?"\|:;\0]/', $filename, $matches));
+
+add_param('filename', $filename);
+add_param('has_error', $has_error);
+
+render('attribution/image', 'question');
+
+?>

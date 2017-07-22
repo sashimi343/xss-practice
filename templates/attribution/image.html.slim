@@ -20,26 +20,35 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-doctype html
-html
-  head
-    title
-      | <% echo(title|html) %> | XSS Practice
-    meta charset='utf-8'
-  body
-    #header
-      h1
-        | <% echo(title|html) %>
-      p
-        | <% echo(description|nl2br) %>
-    hr
-    #content
-      | <% echo(content) %>
-    hr
-    #navigation
-      p
-        a href="/" 問題一覧
-      p
-        a href=="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" 再読み込み
-    #footer
-      | Copyright (c) 2017 Kohei Kakimoto All Rights Reserved.
+h2 ロゴ画像表示くん（仮）
+p
+  | 以下のフォームに画像ファイル名を入力すると、それを表示します。
+    なお、ファイル名に使用できない文字が含まれている場合、
+    エラーメッセージを表示します。
+h3 存在する画像ファイル
+ul
+  li logo-black.png
+  li logo-red.png
+  li logo-green.png
+  li logo-blue.png
+form
+  label for="filename" ファイル名
+  input type="text" name="filename" value=="<% echo(filename|html) %>"
+  input type="submit" value="表示"
+hr
+p
+  // Error page ----------------------------------------------------------------
+  | <% if(has_error,==,true) %>
+  font color="red"
+    | エラー: ファイル名に使用できない文字が含まれています。
+      使用できない文字: / \ < > * ? " | : ; \0(NUL)
+
+  // Display logo image --------------------------------------------------------
+  | <% else %>
+    &lt;img src=&quot;text&quot; value=&#039;/images/
+  font color="red"
+    | <% echo(filename|html) %>
+  | &#039;&gt;
+p
+  | <img src='/images/<% echo(filename) %>'>
+    <% /if %>

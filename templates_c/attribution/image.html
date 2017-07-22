@@ -1,0 +1,38 @@
+<h2>
+  ロゴ画像表示くん（仮）
+</h2>
+<p>
+  以下のフォームに画像ファイル名を入力すると、それを表示します。
+  なお、ファイル名に使用できない文字が含まれている場合、
+  エラーメッセージを表示します。
+</p>
+<h3>
+  存在する画像ファイル
+</h3>
+<ul>
+  <li>
+    logo-black.png
+  </li>
+  <li>
+    logo-red.png
+  </li>
+  <li>
+    logo-green.png
+  </li>
+  <li>
+    logo-blue.png
+  </li>
+</ul>
+<form>
+  <label for="filename">ファイル名</label><input name="filename" type="text" value="<% echo(filename|html) %>" /><input type="submit" value="表示" />
+</form>
+<hr />
+<p>
+  <% if(has_error,==,true) %><font color="red">エラー: ファイル名に使用できない文字が含まれています。
+    使用できない文字: / \ < > * ? " | : ; \0(NUL)</font><% else %>
+  &lt;img src=&quot;text&quot; value=&#039;/images/<font color="red"><% echo(filename|html) %></font>&#039;&gt;
+</p>
+<p>
+  <img src='/images/<% echo(filename) %>'>
+  <% /if %>
+</p>
